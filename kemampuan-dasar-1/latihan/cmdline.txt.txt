@@ -1,0 +1,41 @@
+System Commands
+-logoff (Digunakan untuk pergantian pengguna komputer dengan menutup program)
+-shutdown (Perintah untuk mematikan komputer secara keseluruhan)
+-restart (Perintah untuk menjalankan ulang Sistem)
+-standby (Komputer tidak dimatikan secara keseluruhan dimana semua komponen komputer mati kecuali memori (RAM))
+-dir (Digunakan untuk melihat semua direktori)
+-chdir (Dengan perintah ini, Anda dapat kembali ke direktori yang dibuka sebelumnya dengan perintah seperti di bawah ini:
+		chdir.. (Jika perintah tersebut dijalankan, efeknya akan seperti ketika Anda klik tombol back pada File Explorer.)
+		chdir\ (Dengan perintah tersebut, dari direktori C:\Windows\COMMAND> Anda dapat lompat ke C:\ dalam sekejap.)
+-chkdsk (Apabila laptop atau komputer lambat, Sebagai langkah pengecekan pertama, Anda dapat menjalankan perintah chkdsk. Perintah ini berfungsi untuk memeriksa status hard drive Anda. Di samping itu, chkdsk juga dapat digunakan untuk mencoba membetulkan hard drive yang error karena bad sector. Jalankan saja perintah berikut ini:
+		chkdsk d: /r)
+-cmdkey (Digunakan untuk membuat, menghapus, atau melihat username dan password yang digunakan untuk login ke komputer. Perintah ini bermanfaat apabila Anda adalah admin user dari komputer tersebut.
+		Jika Anda ingin melihat daftar username dan password milik user komputer, ketikkan:
+		cmdkey /list
+		untuk mendaftarkan sebuah username dan password dengan perintah berikut: 
+		cmdkey /add:server01 /user:userbaru /pass:pf90
+		Dengan itu, Anda telah membuat akses untuk user bernama userbaru dengan password pf90 agar dapat memasuki server01.
+		Jika ingin menghapusnya, tinggal gunakan perintah ini:
+		cmdkey /delete:userbaru
+		Anda juga dapat mengosongkan daftar username dan password dalam sebuah server:
+		cmdkey /delete:server01
+-ipconfig (Digunakan untuk menampilkan informasi IP address pada network adapter)
+-color (Digunakan untuk mengganti warna command prompt, ada enam warna yang dapat dipilih. Akan tetapi, keenamnya diwakili oleh huruf. Berikut daftarnya:
+		a hijau muda
+		b aqua muda
+		c merah muda
+		d ungu muda
+		e kuning muda
+		f putih terang
+		contoh perintahnya: color a)
+-cls (Untuk menghapus semua tekt di command prompt)
+-ping (Digunakan untuk mengecek komunikasi antar komputer dalam sebuah jaringan menempuh protokol TCP/IP)
+-date (Untuk melihat tanggal, bulan, tahun dan menggantinya)
+-tree (Memperlihatkan struktur folder dan file-file yang ada pada suatu drive atau path dengan tampilan grafis. Bentuk grafis tampilannya seperti hierarki pohon (tree))
+-del (Digunakan untuk menghapus file)
+-recover (Jika hard drive mengalami kerusakan, Anda dapat mencoba untuk mengembalikan data di dalamnya dengan perintah recover.)
+-rename (digunakan untuk mengubah nama file dan direktori. Misalnya, dengan perintah di bawah Anda dapat mengubah file “computer.jpg” menjadi “text.jpg”:
+		rename d:/pictures/computer.jpg text.jpg)
+-cd (Digunakan untuk pindah direktori)
+-systeminfo (Untuk menampilkan informasi komputer yang kamu gunakan)
+-exit (Digunakan untuk keluar dari Command Prompt atau menutup proses batch script yang sedang berjalan)

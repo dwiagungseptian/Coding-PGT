@@ -1,0 +1,28 @@
+Memulai Permintaan Tarik
+
+1. Identifikasi Repositori Github yang ingin Anda sumbangkan, dan klik tombol "Fork" untuk membuat tiruan repositori di akun Github Anda sendiri:
+2. Ini akan membuat salinan persis dari repositori di akun Anda sendiri
+3. Pilih URL SSH sehingga akan meminta frasa sandi kunci SSH Anda alih-alih nama pengguna dan kata sandi setiap kali Anda git push atau git pull. Selanjutnya, kami akan mengkloning repositori ini ke mesin lokal kami:
+$ git clone [ssh-url] [folder-name]
+$ cd [folder-name]
+
+4. Permintaan tarik akan diperbarui secara otomatis. Mari buat cabang baru untuk membuat perubahan yang sangat sederhana untuk mengubah file readme.md:
+$ git checkout -b [new-feature]
+
+5. Setelah membuat penambahan yang relevan untuk membangun fitur baru, kami hanya akan melakukan perubahan baru dan checkout ke cabang master git:
+$ git add .
+$ git commit -m "information added in readme"
+$ git checkout master
+
+6. Pada titik ini, kami akan mendorong cabang ke repositori jarak jauh. Untuk ini pertama-tama kita akan memeriksa nama cabang dengan fitur baru serta alias repositori jarak jauh git. Kemudian kita akan mendorong perubahan menggunakan git Push [git-remote-alias] [branch-name]:
+$ git branch
+* master
+readme
+$ git remote -v
+origin  git@github.com:[forked-repo-owner-username]/[repo-name].git (fetch)
+origin  git@github.com:[forked-repo-owner-username]/[repo-name].git (push)
+$ git push origin readme
+
+7. Di halaman Github repositori bercabang kami, kami akan mengubah ke cabang dengan fitur baru dan kemudian menekan tombol "Pull Request".
+8. Setelah mengirimkan permintaan tarik, itu akan langsung membawa kita ke halaman permintaan tarik repositori asli. Kami akan melihat permintaan tarik kami, baik sebagai masalah baru maupun permintaan tarik baru.
+9. Setelah diskusi, mungkin pemilik repositori bercabang mungkin ingin menambahkan perubahan pada fitur baru. Dalam hal ini, kami akan checkout ke cabang yang sama di mesin lokal kami, melakukan itu, dan mendorongnya kembali ke Github. Ketika kami mengunjungi halaman permintaan tarik dari repositori asli, itu akan diperbarui secara otomatis!

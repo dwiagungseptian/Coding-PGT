@@ -1,0 +1,13 @@
+Buat proyek/direktori baru dari baris perintah :
+$ rails new github_guide
+
+- Buka Github dan klik tombol '+' di pojok kanan rop dan pilih 'New Repository'
+- Kemudian isi kolom Repository name dan Description. Tetap publik, dan jangan "Inisialisasi repositori ini dengan README". Jangan mengubah apa pun. Klik "Buat repositori".
+- Selanjutnya Anda akan melihat halaman pengaturan. Ini adalah instruksi untuk menghubungkan Repo yang baru saja Anda buat di Github (Remote) ke direktori yang Anda buat di terminal Anda (Lokal).
+- Sekarang mari kita perbarui Repo ini. Kembali ke terminal Anda dan git add, git commit, dan git Push:
+
+$ git init (Untuk meninisialisasi)
+$ git status (Untuk melihat status)
+$ git add . (Untuk upload file ke github)
+$ git commit -m "Second commit" 
+$ git push -u origin master

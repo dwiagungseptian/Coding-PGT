@@ -1,0 +1,35 @@
+@ECHO OFF
+PowerShell.exe -Command "& '%~dpn0.ps1'"
+PAUSE
+
+@ECHO OFF M(ematikan perintah yang bergema. Ini hanya membuat perintah Anda yang lain tidak ditampilkan di layar saat file batch berjalan. Baris ini sendiri disembunyikan dengan menggunakan simbol at (@) di depannya.)
+PowerShell.exe -Perintah “& '%~dpn0.ps1′” (sebenarnya menjalankan skrip PowerShell. PowerShell.exe tentu saja dapat dipanggil dari jendela CMD atau file batch mana pun untuk meluncurkan PowerShell ke konsol kosong seperti biasa. Anda juga dapat menggunakannya untuk menjalankan perintah langsung dari file batch, dengan menyertakan parameter -Command dan argumen yang sesuai. Cara ini digunakan untuk menargetkan file .PS1 kita adalah dengan variabel khusus %~dpn0. Jalankan dari file batch, %~dpn0 mengevaluasi ke huruf drive, jalur folder, dan nama file (tanpa ekstensi) dari file batch. Karena file batch dan skrip PowerShell akan berada di folder yang sama dan memiliki nama yang sama, %~dpn0.ps1 akan diterjemahkan ke jalur file lengkap skrip PowerShell.)
+PAUSE (hanya menjeda eksekusi batch dan menunggu input pengguna. Ini umumnya berguna untuk ada di akhir file batch Anda, sehingga Anda memiliki kesempatan untuk meninjau keluaran perintah apa pun sebelum jendela menghilang. Saat kita melalui pengujian setiap langkah, kegunaan ini akan menjadi lebih jelas.)
+
+
+(Perintah berikut digunakan untuk menandai MyScript.ps1 sebagai dari sumber eksternal: Add-Content -Path 'D:\coding-PGT\kemampuan-dasar-1\latihan\powershellscript\MyScript.ps1' -Value "[ZoneTransfer]`nZoneId=3" -Stream 'Zone.Identifier'
+Itu menetapkan aliran data alternatif Zone.Identifier pada MyScript.ps1 sehingga Windows akan mengira file tersebut berasal dari Internet . Itu dapat dengan mudah dibalik dengan perintah berikut: Clear-Content -Path 'D:\coding-PGT\kemampuan-dasar-1\latihan\powershellscript\MyScript.ps1' -Stream 'Zone.Identifier')
+
+
+berikut kode yang digunakan untuk demonstrasi: if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))
+{Write-Output 'Running as Administrator!'}
+else
+{Write-Output 'Running Limited!'}
+Pause
+
+Jika sesi PowerShell belum ditingkatkan, ini akan memicu permintaan UAC. Untuk menggunakan ini dari file batch untuk meluncurkan skrip kami, kami akan menghasilkan dua proses PowerShell – satu untuk menjalankan Start-Process dan lainnya, diluncurkan oleh Start-Process, untuk menjalankan skrip. Baris kedua dari file batch perlu diubah menjadi ini: PowerShell.exe -Command "& {Start-Process PowerShell.exe -ArgumentList '-ExecutionPolicy Bypass -File ""%~dpn0.ps1""' -Verb RunAs}"
+
+Jauh lebih mudah untuk menjalankan skrip Anda tanpa profil sepenuhnya sehingga Anda tidak perlu khawatir tentang hal ini. Untuk melakukan itu, kita hanya perlu mengubah baris kedua dari file batch sekali lagi: PowerShell.exe -NoProfile -Command "& {Start-Process PowerShell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""%~dpn0.ps1""' -Verb RunAs}"
+
+Jika Anda tidak memerlukan hak Administrator dalam skrip PowerShell Anda, Anda dapat melakukan tanpa instance PowerShell kedua dan baris kedua dari file batch Anda akan terlihat seperti ini: PowerShell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
+
+Bergantung pada apakah Anda memerlukan izin Administrator untuk skrip PowerShell Anda atau tidak (dan Anda seharusnya tidak memintanya jika tidak) file batch terakhir akan terlihat seperti salah satu dari dua di bawah ini.
+Tanpa Akses Admin:
+@ECHO OFF
+PowerShell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
+PAUSE
+
+Dengan Akses Admin:
+@ECHO OFF
+PowerShell.exe -NoProfile -Command "& {Start-Process PowerShell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""%~dpn0.ps1""' -Verb RunAs}"
+PAUSE
